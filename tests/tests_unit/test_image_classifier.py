@@ -64,7 +64,7 @@ class TestTransferLearningModel:
 class TestImageClassifier:
     def test_create_scaled_np_array(self, image_classifier: ImageClassifier) -> None:
         with open(conftest.TEST_DOG_IMAGE_FILE_PATH, "rb") as f:
-            np_image: np.ndarray = image_classifier.create_scaled_np_array(image=f.read())
+            np_image: np.ndarray = image_classifier._create_scaled_np_array(image=f.read())
 
         assert np_image.shape == (config.Config.IMAGE_RESOLUTION, config.Config.IMAGE_RESOLUTION, 3)
         assert np.max(np_image) <= 1.0
@@ -72,7 +72,7 @@ class TestImageClassifier:
 
     def test_process_image(self, image_classifier: ImageClassifier) -> None:
         with open(conftest.TEST_DOG_IMAGE_FILE_PATH, "rb") as f:
-            np_image_batch: np.ndarray = image_classifier.create_scaled_image_batch(image=f.read())
+            np_image_batch: np.ndarray = image_classifier._create_scaled_image_batch(image=f.read())
 
         assert np_image_batch.shape == (1, config.Config.IMAGE_RESOLUTION, config.Config.IMAGE_RESOLUTION, 3)
         assert np.max(np_image_batch) <= 1.0

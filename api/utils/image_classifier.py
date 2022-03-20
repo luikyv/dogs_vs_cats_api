@@ -32,7 +32,7 @@ class ImageClassifier:
     def __init__(self, prediction_model: PredictionModel) -> None:
         self.prediction_model = prediction_model
 
-    def create_scaled_np_array(self, image: bytes) -> np.ndarray:
+    def _create_scaled_np_array(self, image: bytes) -> np.ndarray:
         """Convert the image in bytes to a numpy array scaled by a factor of 255"""
 
         return (
@@ -42,13 +42,13 @@ class ImageClassifier:
             / 255.0
         )
 
-    def create_scaled_image_batch(self, image: bytes) -> np.ndarray:
+    def _create_scaled_image_batch(self, image: bytes) -> np.ndarray:
         """Convert the image in bytes to a valid input to the prediction model"""
-        np_image: np.ndarray = self.create_scaled_np_array(image=image)
+        np_image: np.ndarray = self._create_scaled_np_array(image=image)
         # Add one more dimension to the array to simulate a batch of one image
         return np_image[np.newaxis, ...]
 
     def predict(self, image: bytes) -> config.Config.CLASS_NAMES_LITERAL:
 
-        image_batch: np.ndarray = self.create_scaled_image_batch(image=image)
+        image_batch: np.ndarray = self._create_scaled_image_batch(image=image)
         return self.prediction_model.predict(image_batch=image_batch)
