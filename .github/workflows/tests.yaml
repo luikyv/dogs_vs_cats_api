@@ -1,0 +1,33 @@
+name: Dogs vs Cats CI Tests
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-dogs-vs-cats:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install Poetry
+        uses: abatilo/actions-poetry@v2.0.0
+        with:
+          poetry-version: 1.1.11
+
+      - name: Install Dependencies
+        working-directory: .
+        run: |
+          poetry export --without-hashes --dev -o requirements_dev.txt
+          pip3 install -r requirements_dev.txt
+
+      - name: Run Tests
+        working-directory: .
+        env:
+          ENVIRONMENT: TEST
+        run: |
+          pwd && pytest -rs --disable-warnings
