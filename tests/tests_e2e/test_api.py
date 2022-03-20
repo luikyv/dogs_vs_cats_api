@@ -5,7 +5,7 @@ import pytest
 from fastapi import status
 from fastapi.testclient import TestClient
 
-from api.server import config
+from api import config
 from api.server.main import api
 from tests import conftest
 

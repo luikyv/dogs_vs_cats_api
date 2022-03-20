@@ -3,7 +3,7 @@ import enum
 from pathlib import Path
 from typing import Literal
 
-#################### Endpoints ####################
+#################### Classes ####################
 
 
 class ClassNames(enum.Enum):
@@ -16,5 +16,5 @@ class Config:
 
     VERSION: str = "0.1.0"
     IMAGE_RESOLUTION: int = 224
-    SAVED_MODEL_PATH: str = str(Path(__file__).parent.parent.parent.absolute()) + "/model"
+    SAVED_MODEL_PATH: str = str(Path(__file__).parent.parent.absolute()) + "/model"
     CLASS_NAMES_LITERAL = Literal[tuple(cn.name for cn in ClassNames)]  # type: ignore

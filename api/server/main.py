@@ -11,9 +11,9 @@ from fastapi import status
 from fastapi import UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 
-from . import config
 from . import dependencies
-from . import schemas
+from .. import config
+from .. import schemas
 
 #################### Initialization ####################
 

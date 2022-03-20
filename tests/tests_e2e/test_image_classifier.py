@@ -1,7 +1,7 @@
 """Test the image classifier methods end to end"""
 import pytest
 
-from api.server import config
+from api import config
 from api.utils.image_classifier import ImageClassifier
 from api.utils.image_classifier import TransferLearningModel
 from tests import conftest

@@ -3,7 +3,7 @@ import abc
 
 import numpy as np
 
-from ..server import config
+from .. import config
 
 #################### Interfaces ####################
 

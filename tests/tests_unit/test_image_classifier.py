@@ -3,7 +3,7 @@ import numpy as np
 import pytest
 from PIL import Image
 
-from api.server import config
+from api import config
 from api.utils.image_classifier import ImageClassifier
 from api.utils.image_classifier import TransferLearningModel
 from tests import conftest
