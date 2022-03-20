@@ -18,7 +18,7 @@ from .. import schemas
 #################### Initialization ####################
 
 api = FastAPI(
-    title="Cat and Dogs API",
+    title="Dogs vs Cat API",
     description="Classify pictures between cats and dogs",
     version=config.Config.VERSION,
 )
